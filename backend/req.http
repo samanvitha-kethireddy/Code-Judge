@@ -1,0 +1,74 @@
+POST http://localhost:5000/execute
+Content-Type: application/json
+
+{
+  "code":"print(999)",
+  "input":"",
+  "expectedOutput":"12"
+}
+
+###problems
+POST http://localhost:5000/problems
+Content-Type: application/json
+
+{
+  "title":"Add Two Numbers",
+  "description":"Given two numbers return their sum",
+  "difficulty":"Easy",
+  "testCases":[
+    {
+      "input":"2 3",
+      "expectedOutput":"5"
+    },
+    {
+      "input":"10 20",
+      "expectedOutput":"30"
+    }
+  ]
+}
+
+###submit
+POST http://localhost:5000/submit
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTIzYjMwNjVhM2QzYmNmMWQ1ZDU1ZTMiLCJpYXQiOjE3ODA4MjI5OTEsImV4cCI6MTc4MTQyNzc5MX0.Mb1zvafb5WXH_VIWnfJ6IMW7a7bYPhqii57IrXM6IOU
+
+{
+  "problemId":"6a22eee64f39a3f7c12c5b87",
+ "language":"javascript",
+  "code":"console.log(a+b)"
+}  
+
+###register
+POST http://localhost:5000/register
+Content-Type: application/json
+
+{
+  "username":"nani",
+  "email":"nani@test.com",
+  "password":"123456"
+}
+
+
+###login
+POST http://localhost:5000/login
+Content-Type: application/json
+
+{
+  "email":"sam@test.com",
+  "password":"123456"
+}
+
+
+###submissions
+GET http://localhost:5000/submissions
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTIzYjMwNjVhM2QzYmNmMWQ1ZDU1ZTMiLCJpYXQiOjE3ODA4MjI5OTEsImV4cCI6MTc4MTQyNzc5MX0.Mb1zvafb5WXH_VIWnfJ6IMW7a7bYPhqii57IrXM6IOU
+
+###leaderboard
+GET http://localhost:5000/leaderboard
+
+###test js
+GET http://localhost:5000/test-js
+
+
+###test cpp
+GET http://localhost:5000/test-cpp
