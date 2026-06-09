@@ -32,6 +32,36 @@ app.post("/problems", async (req, res) => {
   }
 });
 
+app.get("/problems", async (req, res) => {
+  try {
+    const problems = await Problem.find();
+
+    res.json(problems);
+  } catch (error) {
+    res.status(500).json({
+      error: error.message,
+    });
+  }
+});
+
+app.get("/problems/:id", async (req, res) => {
+  try {
+    const problem = await Problem.findById(req.params.id);
+
+    if (!problem) {
+      return res.status(404).json({
+        error: "Problem not found",
+      });
+    }
+
+    res.json(problem);
+  } catch (error) {
+    res.status(500).json({
+      error: error.message,
+    });
+  }
+});
+
 app.post("/submit", auth, async (req, res) => {
   try {
     const { problemId, code, language } = req.body;
@@ -108,7 +138,9 @@ app.post("/submit", auth, async (req, res) => {
 app.get("/submissions", auth, async (req, res) => {
   const submissions = await Submission.find({
     userId: req.user.userId,
-  }).sort({ submittedAt: -1 });
+  })
+    .populate("problemId", "title")
+    .sort({ submittedAt: -1 });
 
   res.json(submissions);
 });
@@ -232,28 +264,3 @@ app.post("/login", async (req, res) => {
 app.listen(5000, () => {
   console.log("Server running on port 5000");
 });
-
-
-// //remove later
-// app.get("/test-js", async (req, res) => {
-//   const result = await executeJs("console.log(2+2)", "");
-
-//   res.json(result);
-// });
-
-// //remove later
-// app.get("/test-cpp", async (req, res) => {
-//   const result = await executeCpp(
-//     `
-// #include <iostream>
-// using namespace std;
-
-// int main() {
-//     cout << 2 + 2;
-// }
-// `,
-//     "",
-//   );
-
-//   res.json(result);
-// });

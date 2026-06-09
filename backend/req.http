@@ -1,12 +1,3 @@
-POST http://localhost:5000/execute
-Content-Type: application/json
-
-{
-  "code":"print(999)",
-  "input":"",
-  "expectedOutput":"12"
-}
-
 ###problems
 POST http://localhost:5000/problems
 Content-Type: application/json
@@ -26,6 +17,13 @@ Content-Type: application/json
     }
   ]
 }
+
+###get probs
+GET http://localhost:5000/problems
+
+
+###get particular prob
+GET http://localhost:5000/problems/6a22eee64f39a3f7c12c5b87
 
 ###submit
 POST http://localhost:5000/submit
