@@ -9,11 +9,15 @@ export default function ProblemDetail() {
   const [code, setCode] = useState("");
   const [problem, setProblem] = useState(null);
   const [verdict, setVerdict] = useState("");
+  const [runtimeError, setRuntimeError] = useState("");
+  const [failedTestCase, setFailedTestCase] = useState(null);
 
 const handleSubmit = async () => {
   try {
     const token = localStorage.getItem("token");
-
+setVerdict("");
+setRuntimeError("");
+setFailedTestCase(null);
     const res = await axios.post(
       "http://localhost:5000/submit",
       {
@@ -29,6 +33,9 @@ const handleSubmit = async () => {
     );
 
     setVerdict(res.data.verdict);
+setRuntimeError(res.data.error || "");
+setFailedTestCase(res.data.failedTestCase || null);
+
   } catch (err) {
     console.log(err);
   }
@@ -71,8 +78,27 @@ const handleSubmit = async () => {
           Submit Solution
         </button>
         {verdict && (
-          <h2 className="mt-4 text-xl font-bold">Verdict: {verdict}</h2>
-        )}
+  <h2
+    className={`mt-4 text-xl font-bold ${
+      verdict === "Accepted"
+        ? "text-green-600"
+        : "text-red-600"
+    }`}
+  >
+    Verdict: {verdict}
+  </h2>
+)}
+{failedTestCase !== null  && (
+  <p className="mt-2 text-red-600 font-medium">
+    Failed on Test Case #{failedTestCase}
+  </p>
+)}
+
+{runtimeError && (
+  <pre className="mt-4 bg-red-100 text-red-700 p-4 rounded overflow-auto whitespace-pre-wrap">
+    {runtimeError}
+  </pre>
+)}
       </div>
     </div>
   );

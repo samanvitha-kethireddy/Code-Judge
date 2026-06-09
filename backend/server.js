@@ -261,6 +261,39 @@ app.post("/login", async (req, res) => {
   }
 });
 
+app.get("/profile", auth, async (req, res) => {
+  try {
+    const user = await User.findById(req.user.userId).select("-password");
+
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    const submissions = await Submission.find({ userId: req.user.userId });
+
+    const submissionsCount = submissions.length;
+    const acceptedSolutions = submissions.filter(
+      (s) => s.verdict === "Accepted"
+    ).length;
+    const successRate =
+      submissionsCount > 0
+        ? ((acceptedSolutions / submissionsCount) * 100).toFixed(1)
+        : 0;
+
+    res.json({
+      username: user.username,
+      email: user.email,
+      submissionsCount,
+      acceptedSolutions,
+      successRate,
+    });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+
+
 app.listen(5000, () => {
   console.log("Server running on port 5000");
 });

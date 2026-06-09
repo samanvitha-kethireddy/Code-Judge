@@ -61,6 +61,11 @@ Content-Type: application/json
 GET http://localhost:5000/submissions
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTIzYjMwNjVhM2QzYmNmMWQ1ZDU1ZTMiLCJpYXQiOjE3ODA4MjI5OTEsImV4cCI6MTc4MTQyNzc5MX0.Mb1zvafb5WXH_VIWnfJ6IMW7a7bYPhqii57IrXM6IOU
 
+
+###profile
+GET http://localhost:5000/profile
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTIzYjMwNjVhM2QzYmNmMWQ1ZDU1ZTMiLCJpYXQiOjE3ODA4MjI5OTEsImV4cCI6MTc4MTQyNzc5MX0.Mb1zvafb5WXH_VIWnfJ6IMW7a7bYPhqii57IrXM6IOU
+
 ###leaderboard
 GET http://localhost:5000/leaderboard
 

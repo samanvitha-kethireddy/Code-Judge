@@ -35,9 +35,15 @@ export default function Navbar() {
         </NavLink>
 
         {token && (
-          <NavLink to="/submissions" className={navClass}>
-            Submissions
-          </NavLink>
+          <>
+            <NavLink to="/submissions" className={navClass}>
+              Submissions
+            </NavLink>
+
+            <NavLink to="/profile" className={navClass}>
+              Profile
+            </NavLink>
+          </>
         )}
 
         {token ? (
