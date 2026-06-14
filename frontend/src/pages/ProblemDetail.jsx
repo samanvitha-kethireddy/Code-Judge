@@ -22,7 +22,7 @@ export default function ProblemDetail() {
 
   useEffect(() => {
     axios
-      .get(``${import.meta.env.VITE_API_URL}/problems/${id}`)
+      .get(`${import.meta.env.VITE_API_URL}/problems/${id}`)
       .then((res) => {
         setProblem(res.data);
         const savedCode = localStorage.getItem(`code_${id}_${language}`);
