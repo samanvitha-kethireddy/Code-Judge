@@ -12,7 +12,7 @@ const auth = require("./middleware/auth");
 const JWT_SECRET = "mysecretkey";
 
 mongoose
-  .connect("mongodb://127.0.0.1:27017/onlinejudge")
+ .connect(process.env.MONGO_URI)
   .then(() => console.log("MongoDB Connected"))
   .catch((err) => console.log(err));
 
