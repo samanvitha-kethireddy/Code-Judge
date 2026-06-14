@@ -5,9 +5,10 @@ export default function Profile() {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
+    const token = localStorage.getItem("token");
     axios
       .get("http://localhost:5000/profile", {
-        headers: { Authorization: localStorage.getItem("token") },
+        headers: { Authorization: token?.startsWith("Bearer ") ? token : `Bearer ${token}` },
       })
       .then((res) => setUser(res.data))
       .catch((err) => console.log(err));
@@ -15,84 +16,118 @@ export default function Profile() {
 
   if (!user) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-100">
-        <p className="text-lg text-gray-600">Loading profile...</p>
+      <div className="min-h-screen flex items-center justify-center bg-stone-200 dark:bg-zinc-900 transition-colors duration-300 relative overflow-x-hidden text-lg font-mono">
+        <div className="absolute inset-0 bg-[radial-gradient(#94a3b8_1.5px,transparent_1px)] dark:bg-[radial-gradient(#334155_1.5px,transparent_1px)] [background-size:20px_20px] animate-moving-grid pointer-events-none z-0" />
+        <div className="bg-stone-50 dark:bg-zinc-900 border-4 border-zinc-900 dark:border-zinc-800 p-6 z-10 relative shadow-[4px_4px_0px_0px_#18181b] dark:shadow-[4px_4px_0px_0px_#000]">
+          <p className="text-sm font-black uppercase tracking-widest text-zinc-500 dark:text-zinc-400 animate-pulse">
+            [fetching profile file entries...]
+          </p>
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center p-10">
-      <div className="w-full max-w-3xl bg-white rounded-3xl shadow-2xl p-10">
-        {/* Header */}
-        <div className="flex items-center gap-6 border-b pb-6">
-          {user.profileImageUrl ? (
-            <img
-              src={user.profileImageUrl}
-              alt="Profile"
-              className="w-24 h-24 rounded-full object-cover border-4 border-blue-500 shadow-md"
-            />
-          ) : (
-            <div className="w-24 h-24 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-3xl font-bold shadow-md">
-              {user.username.charAt(0).toUpperCase()}
-            </div>
-          )}
+    <div className="min-h-screen bg-stone-200 dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100 p-6 md:p-10 font-mono tracking-tight transition-colors duration-300 relative overflow-x-hidden text-lg">
+      <div className="absolute inset-0 bg-[radial-gradient(#94a3b8_1.5px,transparent_1px)] dark:bg-[radial-gradient(#334155_1.5px,transparent_1px)] [background-size:20px_20px] animate-moving-grid pointer-events-none z-0" />
 
+      <div className="max-w-5xl mx-auto space-y-8 z-10 relative">
+        <div className="flex justify-between items-start border-b-4 border-zinc-900 dark:border-zinc-800 pb-6">
           <div>
-            <h1 className="text-3xl font-bold text-gray-800 flex items-center gap-2">
-              My Profile
-            </h1>
-            <p className="text-gray-500">{user.email}</p>
+            <div className="flex items-center gap-2.5 font-black text-3xl tracking-tighter uppercase select-none">
+              <span className="bg-zinc-900 text-white dark:bg-white dark:text-zinc-950 p-1.5 border-2 border-zinc-900 dark:border-transparent">
+                //
+              </span>
+              <span>USER // {user.username}</span>
+            </div>
+            <p className="text-sm text-zinc-700 dark:text-zinc-300 mt-3 lowercase font-bold">
+              [operational data diagnostics and algorithm run metrics logs.]
+            </p>
           </div>
         </div>
 
-        {/* Info Section */}
-        <div className="grid grid-cols-2 gap-6 mt-8">
-          <div className="bg-gray-50 rounded-xl p-6 shadow-sm">
-            <p className="text-sm text-gray-500">Username</p>
-            <p className="text-lg font-semibold text-gray-800">{user.username}</p>
-          </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <StatCard label="01 // SOLVED_COUNT" value={user.problemsSolved ?? 0} color="text-zinc-900 dark:text-white" />
+          <StatCard label="02 // SUBMISSIONS" value={user.submissionsCount ?? 0} color="text-zinc-700 dark:text-zinc-300" />
+          <StatCard label="03 // ACCEPTED" value={user.acceptedSolutions ?? 0} color="text-emerald-600 dark:text-emerald-400" />
+          <StatCard label="04 // SUCCESS_RATE" value={`${user.successRate || 0}%`} color="text-zinc-900 dark:text-white" progress={user.successRate || 0} />
+        </div>
 
-          <div className="bg-gray-50 rounded-xl p-6 shadow-sm">
-            <p className="text-sm text-gray-500">Email</p>
-            <p className="text-lg font-semibold text-gray-800">{user.email}</p>
-          </div>
+        <div className="bg-stone-50 dark:bg-zinc-900 border-4 border-zinc-900 dark:border-zinc-800 p-6 shadow-[4px_4px_0px_0px_#18181b] dark:shadow-[4px_4px_0px_0px_#000]">
+          <h2 className="text-sm font-black text-zinc-900 dark:text-zinc-200 mb-6 uppercase tracking-wider border-b-2 border-zinc-900 dark:border-zinc-800 pb-2">
+            DIFFICULTY_DISTRIBUTION_BARS
+          </h2>
+          
+          <div className="space-y-5 max-w-xl">
+            <div>
+              <div className="flex justify-between text-xs font-black uppercase tracking-wide mb-1.5">
+                <span className="text-emerald-600 dark:text-emerald-400">LVL_01 // EASY</span>
+                <span className="text-zinc-600 dark:text-zinc-400">{user.easySolved ?? 0} solved</span>
+              </div>
+              <div className="w-full bg-stone-200 dark:bg-zinc-950 h-5 rounded-none border-2 border-zinc-900 dark:border-zinc-700 p-0.5">
+                <div 
+                  className="bg-lime-400 dark:bg-emerald-500 h-full rounded-none transition-all duration-500 border-r border-zinc-900 dark:border-zinc-800" 
+                  style={{ width: `${Math.min((user.easySolved || 0) * 5, 100)}%` }}
+                />
+              </div>
+            </div>
 
-          <div className="bg-gray-50 rounded-xl p-6 shadow-sm">
-            <p className="text-sm text-gray-500">Total Submissions</p>
-            <p className="text-lg font-semibold text-gray-800">
-              {user.submissionsCount ?? 0}
-            </p>
-          </div>
+            <div>
+              <div className="flex justify-between text-xs font-black uppercase tracking-wide mb-1.5">
+                <span className="text-amber-600 dark:text-amber-400">LVL_02 // MEDIUM</span>
+                <span className="text-zinc-600 dark:text-zinc-400">{user.mediumSolved ?? 0} solved</span>
+              </div>
+              <div className="w-full bg-stone-200 dark:bg-zinc-950 h-5 rounded-none border-2 border-zinc-900 dark:border-zinc-700 p-0.5">
+                <div 
+                  className="bg-orange-400 dark:bg-amber-500 h-full rounded-none transition-all duration-500 border-r border-zinc-900 dark:border-zinc-800" 
+                  style={{ width: `${Math.min((user.mediumSolved || 0) * 5, 100)}%` }}
+                />
+              </div>
+            </div>
 
-          <div className="bg-gray-50 rounded-xl p-6 shadow-sm">
-            <p className="text-sm text-gray-500">Accepted Solutions</p>
-            <p className="text-lg font-semibold text-green-600">
-              {user.acceptedSolutions ?? 0}
-            </p>
-          </div>
-
-          <div className="bg-gray-50 rounded-xl p-6 shadow-sm col-span-2">
-            <p className="text-sm text-gray-500">Success Rate</p>
-            <p className="text-2xl font-bold text-blue-600">
-              {user.successRate ? `${user.successRate}%` : "0%"}
-            </p>
-            <div className="w-full bg-gray-200 rounded-full h-3 mt-3">
-              <div
-                className="bg-blue-600 h-3 rounded-full"
-                style={{ width: `${user.successRate || 0}%` }}
-              ></div>
+            <div>
+              <div className="flex justify-between text-xs font-black uppercase tracking-wide mb-1.5">
+                <span className="text-rose-600 dark:text-rose-400">LVL_03 // HARD</span>
+                <span className="text-zinc-600 dark:text-zinc-400">{user.hardSolved ?? 0} solved</span>
+              </div>
+              <div className="w-full bg-stone-200 dark:bg-zinc-950 h-5 rounded-none border-2 border-zinc-900 dark:border-zinc-700 p-0.5">
+                <div 
+                  className="bg-pink-500 dark:bg-rose-500 h-full rounded-none transition-all duration-500 border-r border-zinc-900" 
+                  style={{ width: `${Math.min((user.hardSolved || 0) * 5, 100)}%` }}
+                />
+              </div>
             </div>
           </div>
         </div>
 
-        {/* Action */}
-        <div className="mt-10 text-center">
-          <button className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition">
-            Edit Profile
-          </button>
+        <div className="text-center border-t-2 border-zinc-900 dark:border-zinc-800 pt-6">
+          <p className="text-xs font-bold uppercase tracking-widest text-zinc-500 dark:text-zinc-500">
+            HOST_IDENTITY: <span className="underline text-zinc-800 dark:text-zinc-300 decoration-zinc-400 dark:decoration-zinc-600">{user.email}</span>
+          </p>
         </div>
       </div>
+    </div>
+  );
+}
+
+function StatCard({ label, value, color, progress }) {
+  return (
+    <div className="bg-stone-50 dark:bg-zinc-900 border-4 border-zinc-900 dark:border-zinc-800 p-5 flex flex-col justify-between rounded-none shadow-[4px_4px_0px_0px_#18181b] dark:shadow-[4px_4px_0px_0px_#000] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_0px_#18181b] dark:hover:shadow-[6px_6px_0px_0px_#000] transition-all group">
+      <div>
+        <p className="text-[11px] font-black text-zinc-500 dark:text-zinc-400 uppercase tracking-widest mb-2 border-b border-stone-200 dark:border-zinc-800 pb-1">{label}</p>
+        <p className={`text-3xl font-black tracking-tighter ${color}`}>{value}</p>
+      </div>
+      
+      {progress !== undefined && (
+        <div className="w-full mt-4">
+          <div className="w-full bg-stone-200 dark:bg-zinc-950 border border-zinc-400 dark:border-zinc-800 h-2.5 rounded-none p-0.5">
+            <div
+              className="bg-zinc-900 dark:bg-white h-full rounded-none transition-all duration-500"
+              style={{ width: `${progress}%` }}
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 }

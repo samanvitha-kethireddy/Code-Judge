@@ -1,1 +1,12 @@
 @import "tailwindcss";
+
+@variant dark (&:where(.dark, .dark *));
+
+@keyframes brutalist-grid-move {
+  0% { background-position: 0px 0px; }
+  100% { background-position: 40px 40px; }
+}
+
+@utility animate-moving-grid {
+  animation: brutalist-grid-move 2s linear infinite;
+}

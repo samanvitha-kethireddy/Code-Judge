@@ -1,0 +1,594 @@
+[
+  {
+    "title": "Maximum Element",
+    "description": "Given an array of integers, find and return the largest element in the array.",
+    "difficulty": "Easy",
+    "category": "Array",
+    "testCases": [
+      {
+        "input": "1 2 3 4 5",
+        "expectedOutput": "5",
+        "isHidden": false
+      },
+      {
+        "input": "-1 -5 -3 -2",
+        "expectedOutput": "-1",
+        "isHidden": false
+      },
+      {
+        "input": "10",
+        "expectedOutput": "10",
+        "isHidden": true
+      },
+      {
+        "input": "100 99 98 97",
+        "expectedOutput": "100",
+        "isHidden": true
+      }
+    ]
+  },
+
+  {
+    "title": "Palindrome Check",
+    "description": "Determine whether a given string is a palindrome. Return true if it reads the same forward and backward, otherwise false.",
+    "difficulty": "Easy",
+    "category": "String",
+    "testCases": [
+      {
+        "input": "madam",
+        "expectedOutput": "true",
+        "isHidden": false
+      },
+      {
+        "input": "hello",
+        "expectedOutput": "false",
+        "isHidden": false
+      },
+      {
+        "input": "a",
+        "expectedOutput": "true",
+        "isHidden": true
+      },
+      {
+        "input": "racecar",
+        "expectedOutput": "true",
+        "isHidden": true
+      }
+    ]
+  },
+
+  {
+    "title": "Contains Duplicate",
+    "description": "Given an array, determine if any value appears at least twice.",
+    "difficulty": "Easy",
+    "category": "Hash Table",
+    "testCases": [
+      {
+        "input": "1 2 3 1",
+        "expectedOutput": "true",
+        "isHidden": false
+      },
+      {
+        "input": "1 2 3 4",
+        "expectedOutput": "false",
+        "isHidden": false
+      },
+      {
+        "input": "5 5",
+        "expectedOutput": "true",
+        "isHidden": true
+      },
+      {
+        "input": "10",
+        "expectedOutput": "false",
+        "isHidden": true
+      }
+    ]
+  },
+
+  {
+    "title": "FizzBuzz",
+    "description": "Print numbers from 1 to N. For multiples of 3 print Fizz, for multiples of 5 print Buzz, and for multiples of both print FizzBuzz.",
+    "difficulty": "Easy",
+    "category": "General",
+    "testCases": [
+      {
+        "input": "5",
+        "expectedOutput": "1 2 Fizz 4 Buzz",
+        "isHidden": false
+      },
+      {
+        "input": "15",
+        "expectedOutput": "1 2 Fizz 4 Buzz Fizz 7 8 Fizz Buzz 11 Fizz 13 14 FizzBuzz",
+        "isHidden": false
+      },
+      {
+        "input": "1",
+        "expectedOutput": "1",
+        "isHidden": true
+      },
+      {
+        "input": "3",
+        "expectedOutput": "1 2 Fizz",
+        "isHidden": true
+      }
+    ]
+  },
+
+  {
+    "title": "Valid Anagram",
+    "description": "Given two strings, determine if one string is an anagram of the other.",
+    "difficulty": "Easy",
+    "category": "String",
+    "testCases": [
+      {
+        "input": "listen silent",
+        "expectedOutput": "true",
+        "isHidden": false
+      },
+      {
+        "input": "rat car",
+        "expectedOutput": "false",
+        "isHidden": false
+      },
+      {
+        "input": "a a",
+        "expectedOutput": "true",
+        "isHidden": true
+      },
+      {
+        "input": "abc abcd",
+        "expectedOutput": "false",
+        "isHidden": true
+      }
+    ]
+  },
+  {
+    "title": "Reverse String",
+    "description": "Given a string, return the reversed string.",
+    "difficulty": "Easy",
+    "category": "String",
+    "testCases": [
+      {
+        "input": "hello",
+        "expectedOutput": "olleh",
+        "isHidden": false
+      },
+      {
+        "input": "world",
+        "expectedOutput": "dlrow",
+        "isHidden": false
+      },
+      {
+        "input": "a",
+        "expectedOutput": "a",
+        "isHidden": true
+      },
+      {
+        "input": " ",
+        "expectedOutput": " ",
+        "isHidden": true
+      }
+    ]
+  },
+  {
+    "title": "Array Sum",
+    "description": "Given an array of integers, return the sum of all elements.",
+    "difficulty": "Easy",
+    "category": "Array",
+    "testCases": [
+      {
+        "input": "1 2 3 4 5",
+        "expectedOutput": "15",
+        "isHidden": false
+      },
+      {
+        "input": "10 20 30",
+        "expectedOutput": "60",
+        "isHidden": false
+      },
+      {
+        "input": "5",
+        "expectedOutput": "5",
+        "isHidden": true
+      },
+      {
+        "input": "-1 -2 -3",
+        "expectedOutput": "-6",
+        "isHidden": true
+      }
+    ]
+  },
+  {
+    "title": "Count Vowels",
+    "description": "Given a string, count the number of vowels present in it.",
+    "difficulty": "Easy",
+    "category": "String",
+    "testCases": [
+      {
+        "input": "hello",
+        "expectedOutput": "2",
+        "isHidden": false
+      },
+      {
+        "input": "programming",
+        "expectedOutput": "3",
+        "isHidden": false
+      },
+      {
+        "input": "xyz",
+        "expectedOutput": "0",
+        "isHidden": true
+      },
+      {
+        "input": "aeiou",
+        "expectedOutput": "5",
+        "isHidden": true
+      }
+    ]
+  },
+  {
+    "title": "Find Minimum Element",
+    "description": "Given an array of integers, return the smallest element.",
+    "difficulty": "Easy",
+    "category": "Array",
+    "testCases": [
+      {
+        "input": "5 3 8 1 9",
+        "expectedOutput": "1",
+        "isHidden": false
+      },
+      {
+        "input": "-1 -5 -2",
+        "expectedOutput": "-5",
+        "isHidden": false
+      },
+      {
+        "input": "10",
+        "expectedOutput": "10",
+        "isHidden": true
+      },
+      {
+        "input": "100 99 98",
+        "expectedOutput": "98",
+        "isHidden": true
+      }
+    ]
+  },
+  {
+    "title": "Count Even Numbers",
+    "description": "Given an array of integers, count how many numbers are even.",
+    "difficulty": "Easy",
+    "category": "Array",
+    "testCases": [
+      {
+        "input": "1 2 3 4 5 6",
+        "expectedOutput": "3",
+        "isHidden": false
+      },
+      {
+        "input": "2 4 6 8",
+        "expectedOutput": "4",
+        "isHidden": false
+      },
+      {
+        "input": "1 3 5 7",
+        "expectedOutput": "0",
+        "isHidden": true
+      },
+      {
+        "input": "10",
+        "expectedOutput": "1",
+        "isHidden": true
+      }
+    ]
+  },
+  {
+    "title": "Two Sum",
+    "description": "Given an array of integers and a target value, determine whether any two numbers sum to the target.",
+    "difficulty": "Medium",
+    "category": "Array",
+    "testCases": [
+      {
+        "input": "2 7 11 15 | 9",
+        "expectedOutput": "true",
+        "isHidden": false
+      },
+      {
+        "input": "1 2 3 4 | 8",
+        "expectedOutput": "false",
+        "isHidden": false
+      },
+      {
+        "input": "3 3 | 6",
+        "expectedOutput": "true",
+        "isHidden": true
+      },
+      {
+        "input": "5 1 9 2 | 11",
+        "expectedOutput": "true",
+        "isHidden": true
+      }
+    ]
+  },
+  {
+    "title": "Longest Substring Without Repeating Characters",
+    "description": "Find the length of the longest substring without repeating characters.",
+    "difficulty": "Medium",
+    "category": "String",
+    "testCases": [
+      {
+        "input": "abcabcbb",
+        "expectedOutput": "3",
+        "isHidden": false
+      },
+      {
+        "input": "bbbbb",
+        "expectedOutput": "1",
+        "isHidden": false
+      },
+      {
+        "input": "pwwkew",
+        "expectedOutput": "3",
+        "isHidden": true
+      },
+      {
+        "input": " ",
+        "expectedOutput": "0",
+        "isHidden": true
+      }
+    ]
+  },
+  {
+    "title": "Group Anagrams",
+    "description": "Given a list of strings, return the number of anagram groups present.",
+    "difficulty": "Medium",
+    "category": "Hash Table",
+    "testCases": [
+      {
+        "input": "eat tea tan ate nat bat",
+        "expectedOutput": "3",
+        "isHidden": false
+      },
+      {
+        "input": "abc bca cab xyz",
+        "expectedOutput": "2",
+        "isHidden": false
+      },
+      {
+        "input": "a",
+        "expectedOutput": "1",
+        "isHidden": true
+      },
+      {
+        "input": "ab ba cd dc ef",
+        "expectedOutput": "3",
+        "isHidden": true
+      }
+    ]
+  },
+  {
+    "title": "Lowest Common Ancestor",
+    "description": "Given a binary tree and two node values, find their lowest common ancestor.",
+    "difficulty": "Medium",
+    "category": "Tree",
+    "testCases": [
+      {
+        "input": "3 5 1 6 2 0 8 | 5 1",
+        "expectedOutput": "3",
+        "isHidden": false
+      },
+      {
+        "input": "3 5 1 6 2 0 8 | 5 2",
+        "expectedOutput": "5",
+        "isHidden": false
+      },
+      {
+        "input": "1 2 3 | 2 3",
+        "expectedOutput": "1",
+        "isHidden": true
+      },
+      {
+        "input": "6 2 8 0 4 7 9 | 2 8",
+        "expectedOutput": "6",
+        "isHidden": true
+      }
+    ]
+  },
+  {
+    "title": "Rotate Matrix",
+    "description": "Rotate a square matrix by 90 degrees clockwise.",
+    "difficulty": "Medium",
+    "category": "Matrix",
+    "testCases": [
+      {
+        "input": "1 2 | 3 4",
+        "expectedOutput": "3 1 | 4 2",
+        "isHidden": false
+      },
+      {
+        "input": "1 2 3 | 4 5 6 | 7 8 9",
+        "expectedOutput": "7 4 1 | 8 5 2 | 9 6 3",
+        "isHidden": false
+      },
+      {
+        "input": "5",
+        "expectedOutput": "5",
+        "isHidden": true
+      },
+      {
+        "input": "1 2 | 3 4",
+        "expectedOutput": "3 1 | 4 2",
+        "isHidden": true
+      }
+    ]
+  },
+  {
+    "title": "Course Schedule",
+    "description": "Determine whether all courses can be completed given prerequisite pairs.",
+    "difficulty": "Medium",
+    "category": "Graph",
+    "testCases": [
+      {
+        "input": "2 | 1-0",
+        "expectedOutput": "true",
+        "isHidden": false
+      },
+      {
+        "input": "2 | 1-0 0-1",
+        "expectedOutput": "false",
+        "isHidden": false
+      },
+      {
+        "input": "4 | 1-0 2-1 3-2",
+        "expectedOutput": "true",
+        "isHidden": true
+      },
+      {
+        "input": "3 | 0-1 1-2 2-0",
+        "expectedOutput": "false",
+        "isHidden": true
+      }
+    ]
+  },
+  {
+    "title": "Coin Change",
+    "description": "Given coin denominations and a target amount, return the minimum number of coins needed to make the amount. Return -1 if impossible.",
+    "difficulty": "Medium",
+    "category": "Dynamic Programming",
+    "testCases": [
+      {
+        "input": "1 2 5 | 11",
+        "expectedOutput": "3",
+        "isHidden": false
+      },
+      {
+        "input": "2 | 3",
+        "expectedOutput": "-1",
+        "isHidden": false
+      },
+      {
+        "input": "1 | 0",
+        "expectedOutput": "0",
+        "isHidden": true
+      },
+      {
+        "input": "1 3 4 | 6",
+        "expectedOutput": "2",
+        "isHidden": true
+      }
+    ]
+  },
+  {
+    "title": "Trapping Rain Water",
+    "description": "Given an array representing elevation heights, compute how much water can be trapped after raining.",
+    "difficulty": "Hard",
+    "category": "Array",
+    "testCases": [
+      {
+        "input": "0 1 0 2 1 0 1 3 2 1 2 1",
+        "expectedOutput": "6",
+        "isHidden": false
+      },
+      {
+        "input": "4 2 0 3 2 5",
+        "expectedOutput": "9",
+        "isHidden": false
+      },
+      {
+        "input": "1 2 3 4 5",
+        "expectedOutput": "0",
+        "isHidden": true
+      },
+      {
+        "input": "5 4 3 2 1",
+        "expectedOutput": "0",
+        "isHidden": true
+      }
+    ]
+  },
+  {
+    "title": "Word Ladder",
+    "description": "Given a begin word, end word, and a dictionary of words, find the length of the shortest transformation sequence from begin word to end word.",
+    "difficulty": "Hard",
+    "category": "Graph",
+    "testCases": [
+      {
+        "input": "hit cog | hot dot dog lot log cog",
+        "expectedOutput": "5",
+        "isHidden": false
+      },
+      {
+        "input": "lost cost | most fist cost",
+        "expectedOutput": "2",
+        "isHidden": false
+      },
+      {
+        "input": "hit cog | hot dot dog lot log",
+        "expectedOutput": "0",
+        "isHidden": true
+      },
+      {
+        "input": "a c | a b c",
+        "expectedOutput": "2",
+        "isHidden": true
+      }
+    ]
+  },
+  {
+    "title": "Edit Distance",
+    "description": "Given two strings, find the minimum number of operations required to convert one string into another. Allowed operations are insert, delete, and replace.",
+    "difficulty": "Hard",
+    "category": "Dynamic Programming",
+    "testCases": [
+      {
+        "input": "horse ros",
+        "expectedOutput": "3",
+        "isHidden": false
+      },
+      {
+        "input": "intention execution",
+        "expectedOutput": "5",
+        "isHidden": false
+      },
+      {
+        "input": "abc abc",
+        "expectedOutput": "0",
+        "isHidden": true
+      },
+      {
+        "input": "kitten sitting",
+        "expectedOutput": "3",
+        "isHidden": true
+      }
+    ]
+  },
+  {
+    "title": "LRU Cache",
+    "description": "Design and implement a Least Recently Used (LRU) cache supporting get and put operations in O(1) time complexity.",
+    "difficulty": "Hard",
+    "category": "General",
+    "testCases": [
+      {
+        "input": "LRUCache(2) put(1,1) put(2,2) get(1) put(3,3) get(2)",
+        "expectedOutput": "-1",
+        "isHidden": false
+      },
+      {
+        "input": "LRUCache(2) put(1,1) put(2,2) get(1)",
+        "expectedOutput": "1",
+        "isHidden": false
+      },
+      {
+        "input": "LRUCache(1) put(1,1) put(2,2) get(1)",
+        "expectedOutput": "-1",
+        "isHidden": true
+      },
+      {
+        "input": "LRUCache(2) put(2,1) put(1,1) put(2,3) get(2)",
+        "expectedOutput": "3",
+        "isHidden": true
+      }
+    ]
+  }
+]
