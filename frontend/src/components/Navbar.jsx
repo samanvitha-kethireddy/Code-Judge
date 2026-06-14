@@ -42,7 +42,7 @@ export default function Navbar() {
 
 const handleLogout = () => {
   localStorage.clear(); // Wipes everything
-  window.location.href = "/login"; // Forces a hard reload directly back to authentication
+  window.location.href = "/"; 
 };
 
   return (
