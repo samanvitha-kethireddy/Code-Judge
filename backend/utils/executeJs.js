@@ -6,7 +6,7 @@ const executeJs = (code, input) => {
   return new Promise((resolve) => {
     const timestamp = Date.now();
     const tempDir = path.join(__dirname, "../temp");
-    
+
     if (!fs.existsSync(tempDir)) fs.mkdirSync(tempDir, { recursive: true });
 
     const filePath = path.join(tempDir, `code_${timestamp}.js`);
@@ -17,8 +17,7 @@ const executeJs = (code, input) => {
 
     const command = `node "${filePath}" < "${inputPath}"`;
 
-
-  exec(command, { timeout: 2000 }, (error, stdout, stderr) => {
+    exec(command, { timeout: 2000 }, (error, stdout, stderr) => {
       try {
         if (fs.existsSync(filePath)) fs.unlinkSync(filePath);
         if (fs.existsSync(inputPath)) fs.unlinkSync(inputPath);
@@ -28,17 +27,18 @@ const executeJs = (code, input) => {
 
       if (error) {
         let cleanError = stderr || error.message;
-        
-        // 🚀 Regex to scrub out absolute local file path strings completely
-        cleanError = cleanError.replace(/["']?[A-Za-z]:\\[^"'\n]*code_\d+\.js["']?/g, "index.js");
+
+        cleanError = cleanError.replace(
+          /["']?[A-Za-z]:\\[^"'\n]*code_\d+\.js["']?/g,
+          "index.js",
+        );
         cleanError = cleanError.replace(/\/.*?\/code_\d+\.js/g, "index.js"); // Linux fallback
-        
+
         return resolve({ verdict: "Runtime Error", error: cleanError });
       }
 
       resolve({ output: stdout });
     });
-  
   });
 };
 
