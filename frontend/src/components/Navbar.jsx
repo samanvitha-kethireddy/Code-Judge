@@ -40,10 +40,10 @@ export default function Navbar() {
     }
   };
 
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    window.location.href = "/";
-  };
+const handleLogout = () => {
+  localStorage.clear(); // Wipes everything
+  window.location.href = "/login"; // Forces a hard reload directly back to authentication
+};
 
   return (
     <nav className="bg-stone-100 dark:bg-zinc-950 border-b-4 border-zinc-900 dark:border-black px-6 py-4 flex flex-col sm:flex-row justify-between items-center font-mono gap-4 tracking-tight transition-colors duration-300 relative z-50">
