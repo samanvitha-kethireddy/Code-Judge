@@ -49,7 +49,7 @@ export default function ProblemDetail() {
       setRuntimeError("");
       setFailedTestCase(null);
       const res = await axios.post(
-        "`${import.meta.env.VITE_API_URL}/submit",
+        `${import.meta.env.VITE_API_URL}/submit`,
         {
           problemId: id,
           code,
@@ -73,7 +73,7 @@ export default function ProblemDetail() {
   const handleRun = async () => {
     try {
       setRunOutput("Running script framework parameters...");
-      const res = await axios.post("`${import.meta.env.VITE_API_URL}/execute", {
+      const res = await axios.post(`${import.meta.env.VITE_API_URL}/execute`, {
         code,
         language,
         input: customInput,

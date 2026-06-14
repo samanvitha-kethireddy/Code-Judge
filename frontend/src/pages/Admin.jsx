@@ -19,7 +19,7 @@ export default function Admin() {
 
   const fetchProblems = async () => {
     try {
-      const res = await axios.get("`${import.meta.env.VITE_API_URL}/problems", {
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/problems`, {
         headers: { Authorization: localStorage.getItem("token") },
       });
       setProblems(res.data);
@@ -43,7 +43,7 @@ export default function Admin() {
   const handleCreate = async () => {
     try {
       await axios.post(
-        "`${import.meta.env.VITE_API_URL}/problems",
+        `${import.meta.env.VITE_API_URL}/problems`,
         { title, description, difficulty, category, testCases },
         { headers: { Authorization: localStorage.getItem("token") } }
       );

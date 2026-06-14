@@ -47,7 +47,7 @@ export default function Compiler() {
       setLoading(true);
       setOutput("Running execution cycle...");
 
-      const res = await axios.post("`${import.meta.env.VITE_API_URL}/execute", {
+      const res = await axios.post(`${import.meta.env.VITE_API_URL}/execute`, {
         language,
         code,
         input,

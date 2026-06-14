@@ -10,7 +10,7 @@ export default function Submissions() {
   useEffect(() => {
     const token = localStorage.getItem("token");
     axios
-      .get("`${import.meta.env.VITE_API_URL}/submissions", {
+      .get(`${import.meta.env.VITE_API_URL}/submissions`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
