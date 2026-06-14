@@ -9,7 +9,7 @@ export default function Leaderboard() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/leaderboard")
+      .get("`${import.meta.env.VITE_API_URL}/leaderboard")
       .then((res) => {
         setLeaders(res.data);
         setLoading(false);

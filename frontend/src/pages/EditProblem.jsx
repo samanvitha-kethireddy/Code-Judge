@@ -17,7 +17,7 @@ export default function EditProblem() {
   useEffect(() => {
     const fetchProblem = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/problems/${id}`, {
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}/problems/${id}`, {
           headers: { Authorization: localStorage.getItem("token") },
         });
         const problem = res.data;
@@ -46,7 +46,7 @@ export default function EditProblem() {
   const handleUpdate = async () => {
     try {
       await axios.put(
-        `http://localhost:5000/problems/${id}`,
+        `${import.meta.env.VITE_API_URL}/problems/${id}`,
         { title, description, difficulty, category, testCases },
         { headers: { Authorization: localStorage.getItem("token") } }
       );

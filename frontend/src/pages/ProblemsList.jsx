@@ -12,7 +12,7 @@ export default function ProblemsList() {
   // Fetch from backend whenever search query or category pills change
   useEffect(() => {
     const delayDebounceFn = setTimeout(() => {
-      axios.get(`http://localhost:5000/problems?search=${search}&category=${selectedCategory}`)
+      axios.get(``${import.meta.env.VITE_API_URL}/problems?search=${search}&category=${selectedCategory}`)
         .then(res => setProblems(res.data))
         .catch(err => console.log(err));
     }, 300); // 300ms debounce so it doesn't spam the server on every keystroke

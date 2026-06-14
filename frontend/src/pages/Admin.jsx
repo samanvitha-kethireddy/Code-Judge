@@ -19,7 +19,7 @@ export default function Admin() {
 
   const fetchProblems = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/problems", {
+      const res = await axios.get("`${import.meta.env.VITE_API_URL}/problems", {
         headers: { Authorization: localStorage.getItem("token") },
       });
       setProblems(res.data);
@@ -43,7 +43,7 @@ export default function Admin() {
   const handleCreate = async () => {
     try {
       await axios.post(
-        "http://localhost:5000/problems",
+        "`${import.meta.env.VITE_API_URL}/problems",
         { title, description, difficulty, category, testCases },
         { headers: { Authorization: localStorage.getItem("token") } }
       );
@@ -60,7 +60,7 @@ export default function Admin() {
 
   const deleteProblem = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/problems/${id}`, {
+      await axios.delete(`${import.meta.env.VITE_API_URL}/problems/${id}`, {
         headers: { Authorization: localStorage.getItem("token") },
       });
       alert("Problem Deleted");

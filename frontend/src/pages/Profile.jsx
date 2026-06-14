@@ -7,7 +7,7 @@ export default function Profile() {
   useEffect(() => {
     const token = localStorage.getItem("token");
     axios
-      .get("http://localhost:5000/profile", {
+      .get("`${import.meta.env.VITE_API_URL}/profile", {
         headers: { Authorization: token?.startsWith("Bearer ") ? token : `Bearer ${token}` },
       })
       .then((res) => setUser(res.data))

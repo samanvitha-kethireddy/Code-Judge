@@ -14,7 +14,7 @@ export default function Problems() {
   const categories = ["All", "Array", "String", "Hash Table", "Tree", "Matrix", "Graph", "Dynamic Programming", "General"];
 
   useEffect(() => {
-    axios.get("http://localhost:5000/problems")
+    axios.get("`${import.meta.env.VITE_API_URL}/problems")
       .then(res => setProblems(res.data))
       .catch(err => console.log("error loading board tracks:", err));
   }, []);

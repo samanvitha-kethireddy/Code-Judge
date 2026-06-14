@@ -22,7 +22,7 @@ export default function ProblemDetail() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/problems/${id}`)
+      .get(``${import.meta.env.VITE_API_URL}/problems/${id}`)
       .then((res) => {
         setProblem(res.data);
         const savedCode = localStorage.getItem(`code_${id}_${language}`);
@@ -49,7 +49,7 @@ export default function ProblemDetail() {
       setRuntimeError("");
       setFailedTestCase(null);
       const res = await axios.post(
-        "http://localhost:5000/submit",
+        "`${import.meta.env.VITE_API_URL}/submit",
         {
           problemId: id,
           code,
@@ -73,7 +73,7 @@ export default function ProblemDetail() {
   const handleRun = async () => {
     try {
       setRunOutput("Running script framework parameters...");
-      const res = await axios.post("http://localhost:5000/execute", {
+      const res = await axios.post("`${import.meta.env.VITE_API_URL}/execute", {
         code,
         language,
         input: customInput,
